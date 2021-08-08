@@ -1,0 +1,14 @@
+<%@page import="dao.MemberDAO"%>
+<%@page import="dto.MemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String name=request.getParameter("name");
+	String phone=request.getParameter("phone");
+	
+	MemberDTO member=new MemberDTO();
+	member.setName(name);
+	member.setPhone(phone);
+	
+	//MemberDTO member=MemberDAO.getDAO().searchMemberList("phone",phone);
+%>

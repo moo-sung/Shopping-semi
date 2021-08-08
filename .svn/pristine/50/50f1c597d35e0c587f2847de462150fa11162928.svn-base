@@ -1,0 +1,184 @@
+<%@page import="dto.CartDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_url.jspf" %>  
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css"> 
+<link rel="icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+<style type="text/css">
+/* CSS 작성 */
+.titleArea h1 {
+	margin: 0 0 30px;
+    text-align: center;
+}
+
+.basketinfo .menu {
+	text-align: center;
+	border-bottom: 0.3px solid rgb(207, 207, 207);
+	max-width: 180px;
+	margin: 0 auto;
+}
+
+.basketinfo .menu p {
+	font-size: 18px;
+	margin: 20px 20px 12px;
+	padding: 13px 10px 0px;
+}
+
+.order-empty p {
+	margin: 100px 0;
+    text-align: center;
+}
+
+
+.removeBtn {
+	text-align: center
+}
+
+.removeBtn .textAndBtn {
+	margin-right: 650px;
+}
+
+.removeBtn #removeSelectBtn {
+	background-color: rgb(207, 207, 207);
+	cursor: pointer;
+	color: rgb(13, 13, 13);
+	padding: 6px 12px;
+}
+
+.removeBtn #removeAllBtn {
+    text-align: right;
+    background-color: rgb(207, 207, 207);
+	cursor: pointer;
+	color: rgb(13, 13, 13);
+    padding: 6px 12px;
+}
+
+.removeBtn #removeSelectBtn:hover {
+	background-color: rgb(13, 13, 13);
+    border: 1px solid rgb(207, 207, 207);
+    color: rgb(207, 207, 207);
+}
+
+.removeBtn #removeAllBtn:hover {
+	background-color: rgb(13, 13, 13);
+    border: 1px solid rgb(207, 207, 207);
+    color: rgb(207, 207, 207);
+}
+
+.basket_btn {
+	margin: 0 auto;
+	width: 400px;
+	height: 50px;
+	font-size: 1.2em;
+	cursor: pointer;
+	padding: 12px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.basket_btn .submitAllBtn {
+	font-weight: bold; 	
+	color: rgb(13, 13, 13);
+	background-color: rgb(171, 195, 159);
+	padding: 13px 31px 12px;
+	margin-right: 7px;
+}
+
+.basket_btn .submitSelectBtn {
+	font-weight: bold; 	
+	color: rgb(13, 13, 13);
+	background-color: rgb(172, 194, 244);
+	padding: 13px 31px 12px;
+}
+
+.basket_btn .submitAllBtn:hover {
+	background-color: rgb(13, 13, 13);
+    border: 1px solid rgb(207, 207, 207);
+    color: rgb(207, 207, 207);
+}
+
+.basket_btn .submitSelectBtn:hover {
+	background-color: rgb(13, 13, 13);
+    border: 1px solid rgb(207, 207, 207);
+    color: rgb(207, 207, 207);
+}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<%-- header 불러오기 --%>
+		<jsp:include page="../form/header.jsp" />
+		<%-- side 불러오기 --%>
+		<jsp:include page="../form/side.jsp" />		
+		<!-- container start -->
+		<div id="container">	
+			<!-- content area -->
+			<div id="content">
+				<div class="titleArea">
+					<h1>Shopping Cart</h1>
+				</div>
+				<div class="basketinfo">
+					<div class="menu">
+						<p>국내배송상품</p>
+					</div>	
+				</div>
+				<div class="cartlist">				
+					<table border=1>
+						<tr>
+							<td></td> 		 					
+						</tr>
+					</table>
+				</div>
+				
+				<div class="removeBtn">
+					<span class="textAndBtn">
+						<span>선택상품을</span>
+						<button type="button" id="removeSelectBtn">삭제하기</button>
+					</span>	
+					<span>
+						<button type="button" id="removeAllBtn">장바구니비우기</button>
+					</span>
+				</div>
+				<br>
+				<br>
+				<div class="basket_btn">
+					<a href="#" class="submitAllBtn">전체상품 주문</a>
+					<a href="#" class="submitSelectBtn">선택상품 주문</a>
+				</div>
+				
+				<script type="text/javascript">
+				$("#removeSelectBtn").click(function() {
+					if(window.confirm("선택하신 제품을 삭제하시겠습니까?")) {
+						location.href="<%=request.getContextPath()%>/index.jsp?workgroup=minjeong&work=cart_remove"
+					}
+				});
+				
+				$("#removeAllBtn").click(function() {
+					if(window.confirm("장바구니를 비우시겠습니까?")) {
+						location.href="";
+					}
+				});
+				
+				$("#submitAllBtn").click(function() {
+					location.href="";
+				});
+				
+				$("#submitSelectBtn").click(function() {
+					location.href="";
+				});
+				</script>
+			</div>	
+		<!-- container end -->
+		
+		<%-- footer 불러오기 --%>
+		<jsp:include page="../form/footer.jsp" />	
+		</div>		
+	</div>		
+</body>
+</html>

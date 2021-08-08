@@ -1,0 +1,41 @@
+<%@page import="java.sql.Date"%>
+<%@page import="dao.PostDAO"%>
+<%@page import="dto.PostDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- BOARD 테이블에 새글을 500개 저장하는 JSP 문서 - 테스트 프로그램 --%>    
+<%
+	//for(int i=7;i<=109;i++) {
+		PostDTO post=new PostDTO();
+		post.setIdx("TEST_"+7);
+		post.setKinds_post("NOTICE");
+		post.setEmail("moo_sung@naver.com");
+		post.setProduct_idx("TEST_1");
+		post.setTitle("이건 연습입니다만-"+7);
+		post.setContent("준비중입니다.");
+		post.setImg_source("준비중");
+		post.setHit(0);
+		PostDAO.getDAO().insertPost(post);
+	//}
+
+/*
+		pstmt.setString(1, post.getIdx());
+		pstmt.setString(2, post.getKinds_post());
+		pstmt.setString(3, post.getEmail());
+		pstmt.setString(4, post.getProduct_idx());
+		pstmt.setString(5, post.getTitle());
+		pstmt.setString(6, post.getContent());
+		pstmt.setString(7, post.getImg_source());
+*/
+%>    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP</title>
+</head>
+<body>
+	<h1>95개의 테스트 게시글을 저장 하였습니다.</h1>
+</body>
+</html>

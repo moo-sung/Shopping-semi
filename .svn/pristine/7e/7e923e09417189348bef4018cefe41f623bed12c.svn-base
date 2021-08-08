@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/common.css">
+<link rel="icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+<style type="text/css">
+/* CSS 작성 */
+img {
+	width: 400px;
+	height: 500px;
+}
+
+#container .main {
+	/* 글 정렬 */
+	text-align: center;
+}
+
+#container .mainImg li {
+	display: inline;
+}
+
+#container .mainImg img {
+	margin: 10px;
+}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<%-- header 불러오기 --%>
+		<jsp:include page="../form/header.jsp" />
+		<%-- side 불러오기 --%>
+		<jsp:include page="../form/side.jsp" />
+		<!-- container start -->
+		<div id="container">
+			<!-- content area => 본문작성 -->
+			<div id="content">
+
+				<div class="main">
+					<div class="mainImg">
+						<ul>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+							<li><a href="#"><img
+									src="https://via.placeholder.com/400x500" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- container end -->
+
+		<%-- footer 불러오기 --%>
+		<jsp:include page="../form/footer.jsp" />
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<%@page import="dto.PostDTO"%>
+<%@page import="dao.PostDAO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	List<PostDTO> postList=PostDAO.getDAO().selectAllPostList("kinds_post", "orderBy");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>관리자</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/common.css">
+<link rel="icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+<style type="text/css">
+/* CSS 작성 */
+img {
+	width: 400px;
+	height: 500px;
+}
+
+#container .main {
+	/* 글 정렬 */
+	text-align: center;
+}
+
+#container .mainImg li {
+	display: inline;
+}
+
+#container .mainImg img {
+	margin: 10px;
+}
+
+h1 {
+	text-align: center;
+}
+
+table {
+	margin: 5px auto;
+	border: 0.5px solid rgb(207, 207, 207);
+	width: auto;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 11px 50px 10px;
+	height: 40px;
+	border: 0.5px solid rgb(207, 207, 207);
+	text-align: center;
+}
+
+.postF input {
+	font-size: 18px;
+	border: none;
+	padding-left: 1px;
+	line-height: 20px;
+	min-width: 300px;
+	border-bottom: 1px solid white;
+}
+
+.postF input:focus {
+	outline: none;
+}
+
+#searchO {
+	width: 500px;
+	margin: 0 auto;
+	padding-top: 15px;
+	text-align: center;
+}
+
+#searchBtn {
+	margin: 0 auto;
+	background-color: rgb(207, 207, 207);
+	cursor: pointer;
+	padding: 5px 5px;
+	color: rgb(13, 13, 13);
+	font-size: 15px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#searchBtn:hover {
+	background-color: rgb(13, 13, 13);
+	color: rgb(207, 207, 207);
+	border: 1px solid rgb(207, 207, 207);
+}
+
+
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<%-- side 불러오기 --%>
+		<jsp:include page="/admin/admin_side.jsp" />
+		<!-- container start -->
+		<div id="container">
+			<!-- content area => 본문작성 -->
+			<div id="content">
+				<div class="controlArea">
+					<h1>게시판관리</h1>
+				</div>
+				<br>
+				<div id="searchO">
+					<form method="post" name="oForm" class="postF">
+						검색 : <input type="text" name="post">
+						<span id="postCheck"></span>
+						<a type="button" id="searchBtn" >조회</a>
+					</form>
+				</div>
+				
+				<br>
+				<div class="postlist">
+					<form class="postTable">
+						<table>
+							<tr>
+								<th>게시판 종류</th>
+								<th>이메일</th>
+								<th>제목</th>
+								<th>게시글</th>
+								<th>등록일</th>
+								<th>조회수</th>
+							</tr>
+							
+							<% for(PostDTO post:postList )  { %>
+							<tr>
+								<td class="board_status">
+									<select class="status" name="<%=post.getKinds_post()%>%>">
+										<option value="0" <% if(post.getKinds_post()=="0") { %> selected <% } %>>Question</option>
+										<option value="1" <% if(post.getKinds_post()=="1") { %> selected <% } %>>Notice</option>
+										<option value="2" <% if(post.getKinds_post()=="2") { %> selected <% } %>>비활성화</option>
+									</select>
+								</td>
+								
+								<th class="post_e"><%=post.getEmail() %></th>
+								<th class="post_t"><%=post.getTitle() %></th>
+								<th class="post_d"><%=post.getPosted_date() %></th>
+								<th class="post_h"><%=post.getHit() %></th>
+								
+							</tr>
+							<% } %>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

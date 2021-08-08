@@ -1,0 +1,99 @@
+<%@page import="dao.MemberDAO"%>
+<%@page import="dto.MemberDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	List<MemberDTO> memberliList=MemberDAO.getDAO().selectAllMemberList("member");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관리자</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/common.css">
+<link rel="icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+<style type="text/css">
+/* CSS 작성 */
+#contents {
+	margin: 0 auto;
+	padding: 130px 0 80px;
+}
+
+h1 {
+	text-align: center;
+}
+
+table {
+	margin: 5px auto;
+	border: 0.5px solid rgb(207, 207, 207);
+	width: auto;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 11px 10px 10px;
+	height: 40px;
+	border: 0.5px solid rgb(207, 207, 207);
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<%-- side 불러오기 --%>
+		<jsp:include page="/admin/admin_side.jsp" />
+		<!-- container start -->
+		<div id="container">
+			<!-- content area => 본문작성 -->
+			<div id="content">
+				<div class="controlArea">
+					<h1>회원관리</h1>
+				</div>
+				<div class="memberlist">
+					<form name="memberForm" id="memberForm">
+						<table>
+							<tr>
+								<th>이메일</th>
+								<th>이름</th>
+								<th>총금액</th>
+								<th>등급</th>
+								<th>상태</th>
+							</tr>
+							<% for(MemberDTO member:memberliList) { %>
+							<tr>
+								<th class="member_e"><%=member.getEmail() %></th>
+								<th class="member_n"><%=member.getName() %></th>
+								<th class="member_a"><%=member.getTotal_pay() %></th>
+								
+								<td class="member_grade">
+									<select class="grade" name="<%=member.getEmail()%>">
+										<option value="0" <% if(member.getGrade()=="10") { %> selected <% } %>>NOMAL</option>
+										<option value="1" <% if(member.getGrade()=="20") { %> selected <% } %>>VIP</option>
+										<option value="9" <% if(member.getGrade()=="30") { %> selected <% } %>>VVIP</option>
+									</select>
+								</td>
+							
+								<td class="member_status">
+									<select class="status" name="<%=member.getEmail()%>">
+										<option value="0" <% if(member.getStatus()=="0") { %> selected <% } %>>비활성화</option>
+										<option value="1" <% if(member.getStatus()=="1") { %> selected <% } %>>활성화</option>
+										<option value="9" <% if(member.getStatus()=="9") { %> selected <% } %>>관리자</option>
+									</select>
+								</td>
+							</tr>
+							<% } %>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- container end -->
+	</div>
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>
