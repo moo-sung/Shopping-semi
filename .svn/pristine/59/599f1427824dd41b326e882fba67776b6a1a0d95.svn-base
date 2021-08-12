@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- footer start -->
+    <div id="footer">
+      <div class="info">
+        <div class="open">
+          <ul>
+            <li>About us</li>
+            <li>Agreement</li>
+            <li>Privacy policy</li>
+          </ul>
+        </div>
+
+        <div class="address">
+          <span>Company : (주) 김무성</span>
+          <span>CEO : 김무성</span>
+          <span>Business License : 3868801288 </span>
+          <span>E-Commerce Permit : 2019-마포-0585 </span>
+          <span>Tel : 02-336-4363 </span>
+        </div>
+        
+      </div>
+      <div>
+      	<a href="#" class="btnTop"><img src="<%=request.getContextPath()%>/images/btn_image/btnTop.png"></a>
+      </div>
+    </div>
+<!-- footer end -->

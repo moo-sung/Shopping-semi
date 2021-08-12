@@ -1,0 +1,23 @@
+<%@page import="dao.ProductDAO"%>
+<%@page import="dto.ProductDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="/security/admin_check.jspf" %>
+<%
+if (request.getMethod().equals("GET")) {
+	out.println("<script type='text/javascript'>");
+	out.println("location.href='" + request.getContextPath() + "/admin_index.jsp'");
+	out.println("</script>");
+	return;
+}	
+
+	request.setCharacterEncoding("UTF-8");
+	
+	String idx=request.getParameter("idx");
+	
+	ProductDAO.getDAO().deleteProduct(idx);
+	
+	out.println("<script type='text/javascript'>");
+	out.println("alert('"+idx+"')");
+	out.println("location.href = '"+request.getContextPath() + "/admin/product_manager.jsp");
+%>

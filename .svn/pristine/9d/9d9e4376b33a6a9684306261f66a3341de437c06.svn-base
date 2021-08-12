@@ -1,0 +1,33 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="dto.CartDTO"%>
+<%@page import="dao.CartDAO"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_url.jspf" %>
+<%-- 주문 --%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	
+	String[] checkP=request.getParameterValues("checkP");
+	String[] cart = checkP[0].split(",");
+	String[] q = request.getParameterValues("quantity");
+	String[] qty = q[0].split(",");
+	int[] quantity= new int[cart.length];
+	
+	List<CartDTO> cartlist = new ArrayList<CartDTO>();
+	CartDTO cartTemp = new CartDTO();
+	for(int i = 0;i<cart.length;i++){
+		cartlist.add(CartDAO.getDAO().selectCart(cart[i]));	
+		quantity[i]= Integer.parseInt(qty[i]);
+	}	
+	
+	for(int i = 0;i<cart.length;i++){
+		cartTemp = cartlist.get(i);
+		cartTemp.setQuantity(quantity[i]);
+		CartDAO.getDAO().updateCart(cartTemp);
+	}
+	out.println("<script type='text/javascript'>");
+	out.println("location.href='"+request.getContextPath()+"/index.jsp?workgroup=moosungg&work=order.jsp';");
+	out.println("</script>");
+%>

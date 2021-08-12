@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<style type="text/css">
+	
+#list::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#list {
+	position: relative;
+}
+
+#list ul {
+	position: absolute;
+	right: 135px;
+	top: 105px;
+}
+
+#list ul li {
+	float: left;
+	font-size: 15px;
+	font-weight: bold;
+}
+</style>
+<div id="header">
+  <!-- skip navigator -->
+  <div class="skip_navi">
+  	<a href="#">전체 상품목록으로 바로가기</a>
+  	<a href="#">본문 바로가기</a>
+  </div>
+  
+  <div id="list">
+  	<ul>
+  		<li><a href="index.jsp?workgroup=moosung&work=main&orderBy=NEW">NEW&nbsp;&nbsp;</a></li>
+  		<li><a href="index.jsp?workgroup=moosung&work=main&orderBy=NAME">NAME&nbsp;&nbsp;</a></li>
+  		<li><a href="index.jsp?workgroup=moosung&work=main&orderBy=HIGH">HIGH&nbsp;&nbsp;</a></li>
+  		<li><a href="index.jsp?workgroup=moosung&work=main&orderBy=LOW">LOW&nbsp;&nbsp;</a></li>
+  	</ul>
+  </div>
+</div>

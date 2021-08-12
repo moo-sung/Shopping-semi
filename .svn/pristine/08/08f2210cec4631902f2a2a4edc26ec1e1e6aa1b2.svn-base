@@ -1,0 +1,137 @@
+<%@page import="dao.OrdersDAO"%>
+<%@page import="dto.OrdersDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_check.jspf"%>
+<%
+	List<OrdersDTO> orderList= OrdersDAO.getDAO().selectAllOrdersList(loginMember.getEmail());
+	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>nookyoon</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css"> 
+<link rel="icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+<style type="text/css">
+#oderList {
+	text-align: center;
+	margin: 0 auto;
+	width: 1200px;
+}
+#orderList .orderTable .tableTitle {
+	min-width: 200px;
+	max-width : 800px;
+	margin: 0 auto;
+}
+
+#orderList .orderTable table {
+	margin: 0 auto;
+	min-width: 200px;
+	max-width : 1000px;
+}
+
+
+</style>
+</head>
+<body>
+  <div id="wrap">
+	<%-- header 불러오기 --%>
+	<jsp:include page="../form/header.jsp"/>
+    <%-- side 불러오기 --%>
+    <jsp:include page="../form/side.jsp"/>
+    <!-- container start -->  
+    <div id="container">
+	   <!-- content area => 안에 내용들 다 지우고본문작성 -->
+      <div id="content">   
+        <div class="main"> 
+        	<div class="titleArea">
+        		<h1>Order List</h1>
+        		<br>
+         	</div> 
+         	<div id="orderList">
+         		<div class="orderTable">
+         			<div class="tableTitle">
+	         			<h3>주문 상품 정보</h3>
+	         		</div>
+	         		<table border="1" summary="">
+	         			<caption style="display: none">주문 상품 정보</caption>
+	         			<colgroup>
+	         				<col style="width: 135px;">
+	         				<col style="width: auto;">
+	         				<col style="width: 111px;">
+	         				<col style="width: 111px;">
+	         				<col style="width: 111px;">
+	         				<col style="width: 111px;">
+	         				<col style="width: 111px;">
+	         			</colgroup>
+	         			<thead>
+	         				<tr>
+	         					<th scope="col">상품코드<br>[주문번호]</th>
+	         					<th scope="col">주문자</th>
+	         					<th scope="col">배송지(별칭)</th>
+	         					<th scope="col">주문일자</th>
+	         					<th scope="col">주문확인</th>
+	         					<th scope="col">배송확인</th>
+	         					<th scope="col">도착확인</th>
+	         				</tr>
+	         			</thead>
+	         			<tbody>
+
+	      				<% if(orderList.isEmpty()) { %>
+							<tr>
+								<td colspan="7"> 주문 내역이 없습니다.</td>
+							</tr>		      					
+	      				<% } else { %>
+	      					<% int i= 0;
+	      					for(; i<orderList.size(); i++) {
+	      					%>
+	      					<tr>
+	      						<td><input type="text" id="order_id"<%=i%>
+	      						name="order_id<%=i%>" class="" onclick="" readonly="readonly"
+	      						value="<%=orderList.get(i).getIdx()%>"></td>
+	      						<td id="idx"><%=orderList.get(i).getEmail()%></td>
+	      						<td id="address_id"><%=orderList.get(i).getAddress_id()%></td>
+	      						<td id="order_date"><%=orderList.get(i).getOrder_date()%></td>
+	      						<td id="pay" class="clear">
+	      							<input type="text" value="<%=orderList.get(i).getPay_confirm()%>">
+	      						</td>
+	      						<td id="deli" class="clear"><%=orderList.get(i).getDelivery_confirm()%></td>	      					
+	      						<td id="arrive" class="clear"><%=orderList.get(i).getArrive_confirm()%></td>
+	      					</tr>
+	      					<% } %>
+	      				<% } %>
+	         				
+	         				
+	         			</tbody>
+	         		</table>
+         		</div>
+         			
+         	
+         	</div> 
+        
+        </div>
+      </div>
+    </div>
+    <!-- container end -->
+
+	<%-- footer 불러오기 --%>
+	<jsp:include page="../form/footer.jsp"/>
+  </div>
+</body>
+
+<script type="text/javascript">
+	if($(".clear").attr("value", "0")) {
+		$(".clear").text("시발");
+	} else if($(".clear").attr("value", "1")){
+		$(".clear").text("시발놈");
+	}
+	
+	
+
+</script>
+</html>
