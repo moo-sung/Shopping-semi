@@ -1,11 +1,12 @@
 # Shopping-semi
-Site Link : http://www.itwill.xyz/nolookpass/
-조 이름 : NoLookPass
-팀장 : 김무성
-조원 : 강문희, 김민정, 류남규, 박찬혁, 정원택
+
+Site Link : http://www.itwill.xyz/nolookpass/ <br>
+조 이름 : NoLookPass <br>
+팀장 : 김무성 <br>
+조원 : 강문희, 김민정, 류남규, 박찬혁, 정원택 <br>
 
 ## 프로젝트 개요
-참고 사이트 : nookyoon 쇼핑몰
+참고 사이트 : nookyoon 쇼핑몰 <br>
 
 
 ## DB ERD
