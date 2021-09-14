@@ -30,6 +30,6 @@
 	PostDAO.getDAO().insertPost(post);
 	
 	out.println("<script type='text/javascript'>");
-	out.println("location.href='"+request.getContextPath()+"/index.jsp?workgroup=wontack&work=notice';");
+	out.println("location.href='"+request.getContextPath()+"/index.jsp?workgroup=admin&work=notice_manager';");
 	out.println("</script>");
 %>

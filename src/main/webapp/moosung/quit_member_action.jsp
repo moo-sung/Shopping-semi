@@ -8,6 +8,8 @@ String email = loginMember.getEmail();
 
 MemberDAO.getDAO().deleteMember(email);
 
+session.removeAttribute("loginMember");
+
 out.println("<script type='text/javascript'>");
 out.println("alert('회원탈퇴가 완료되었습니다.')");
 out.println("location.href='" + request.getContextPath() + "/index.jsp'");
