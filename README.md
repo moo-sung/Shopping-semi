@@ -1,4 +1,6 @@
-# Site Link : http://www.itwill.xyz/nolookpass/ <br>
+# 세부 화면 구성 및 자료 : 최종 프로젝트.pdf
+
+# Site Link : http://www.itwill.xyz/nolookpass/ <br> (현재 교육기관 서버 문제로 열리지 않음) <br>
 
 ## 프로젝트 개요
 참고 사이트 : nookyoon 쇼핑몰 http://nookyoon.kr/<br>
