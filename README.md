@@ -1,4 +1,4 @@
-# 세부 화면 구성 및 자료 : 최종 프로젝트.pdf (파일 목록 최하단)
+## 세부 화면 구성 및 자료 : 최종 프로젝트.pdf (파일 목록 최하단)
 
 # Site Link : http://www.itwill.xyz/nolookpass/ <br> (현재 교육기관 서버 문제로 열리지 않음) <br>
 
