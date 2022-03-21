@@ -31,7 +31,7 @@ String contentPath=workgroup+"/"+work+".jsp";
 		<jsp:include page="form/side.jsp" />
 		<!-- container start -->
 		<div id="container">
-			<!-- content area => 본문작성 -->
+			<!-- content area -->
 			<div id="content">
 				<div class="main">
 					<jsp:include page="<%=contentPath %>"/>	
