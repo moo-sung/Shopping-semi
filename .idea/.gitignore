@@ -5,6 +5,7 @@
 /httpRequests/
 # CodeStream ignored files
 /../../Shopping-semi\.idea/codestream.xml
+/codestream.xml
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
