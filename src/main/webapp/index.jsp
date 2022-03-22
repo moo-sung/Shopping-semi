@@ -9,7 +9,7 @@ if(workgroup==null) workgroup="moosung";
 String work=request.getParameter("work");
 if(work==null) work="main";
 
-String contentPath=workgroup+"/"+work+".jsp";
+String contentPath=workgroup+"/"+work+"test.jsp";
 %>
 <!DOCTYPE html>
 <html>

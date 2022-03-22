@@ -9,7 +9,7 @@
 	String work=request.getParameter("work");
 	if(work==null) work="admin_main";
 	
-	String contentPath=workgroup+"/"+work+".jsp";
+	String contentPath=workgroup+"/"+work+"test.jsp";
 %>
 <!DOCTYPE html>
 <html>
